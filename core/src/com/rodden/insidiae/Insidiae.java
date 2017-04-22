@@ -19,12 +19,12 @@ public class Insidiae extends ApplicationAdapter {
 
     @Override
     public void create() {
-        mapSprite = new Sprite(new Texture("badlogic.jpg"));
-        camera = new OrthographicCamera(30, 30 * (Gdx.graphics.getHeight() / Gdx.graphics.getWidth()));
+        mapSprite = new Sprite(new Texture("sfbay.png"));
+        camera = new OrthographicCamera(1000, 1000 * (Gdx.graphics.getHeight() / Gdx.graphics.getWidth()));
         camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
         camera.update();
         mapSprite.setPosition(0, 0);
-        mapSprite.setSize(100, 100);
+        mapSprite.setSize(1000, 1000);
         batch = new SpriteBatch();
         Gdx.input.setInputProcessor(new InputGameProcessor(camera));
     }
@@ -41,18 +41,18 @@ public class Insidiae extends ApplicationAdapter {
     }
 
     private void handleInput() {
-        camera.zoom = MathUtils.clamp(camera.zoom, .1f, 100 / camera.viewportWidth);
+        camera.zoom = MathUtils.clamp(camera.zoom, .1f, 1000 / camera.viewportWidth);
         float effectiveViewportWidth = camera.viewportWidth * camera.zoom;
         float effectiveViewportHeight = camera.viewportHeight * camera.zoom;
-        camera.position.x = MathUtils.clamp(camera.position.x, effectiveViewportWidth / 2f, 100 - effectiveViewportWidth / 2f);
-        camera.position.y = MathUtils.clamp(camera.position.y, effectiveViewportHeight / 2f, 100 - effectiveViewportHeight / 2f);
+        camera.position.x = MathUtils.clamp(camera.position.x, effectiveViewportWidth / 2f, 1000 - effectiveViewportWidth / 2f);
+        camera.position.y = MathUtils.clamp(camera.position.y, effectiveViewportHeight / 2f, 1000 - effectiveViewportHeight / 2f);
 
     }
 
     @Override
     public void resize(int width, int height) {
-        camera.viewportWidth = 30f;
-        camera.viewportHeight = 30f * height / width;
+        camera.viewportWidth = 50f;
+        camera.viewportHeight = 50f * height / width;
         camera.update();
     }
 
