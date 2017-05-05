@@ -43,6 +43,16 @@ public class InputGameProcessor implements InputProcessor {
         return false;
     }
 
+    public static void main(String[] args) {
+        int x = 12 + readInt(), y = 0, z = x * x;
+        for (int i = 0; i < 20; i++) y += z;
+        System.out.println(y);
+    }
+
+    public static int readInt() {
+        return 10;
+    }
+
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         final float zoomMultiplier = camera.zoom / 200f;
