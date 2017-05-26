@@ -3,16 +3,19 @@ package com.rodden.insidiae;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 /**
  * Created by David on 4/22/2017.
  */
 public class InputGameProcessor implements InputProcessor {
     private OrthographicCamera camera;
+    private Sprite map;
     private int pressedX, pressedY;
 
-    public InputGameProcessor(OrthographicCamera camera) {
+    public InputGameProcessor(OrthographicCamera camera, Sprite map) {
         this.camera = camera;
+        this.map = map;
     }
 
     @Override
@@ -55,8 +58,8 @@ public class InputGameProcessor implements InputProcessor {
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-        final float zoomMultiplier = camera.zoom / 200f;
-        camera.translate((pressedX - screenX) * zoomMultiplier, (screenY - pressedY) * zoomMultiplier);
+        final float zoomMultiplier = camera.zoom / 20f;
+        camera.position.set(map.getWidth() - screenX * zoomMultiplier, screenY * zoomMultiplier, 0);
         return false;
     }
 

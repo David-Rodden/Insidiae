@@ -26,7 +26,7 @@ public class Insidiae extends ApplicationAdapter {
         mapSprite.setPosition(0, 0);
         mapSprite.setSize(1000, 1000);
         batch = new SpriteBatch();
-        Gdx.input.setInputProcessor(new InputGameProcessor(camera));
+        Gdx.input.setInputProcessor(new InputGameProcessor(camera, mapSprite));
     }
 
     @Override
