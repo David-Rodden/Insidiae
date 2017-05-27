@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
@@ -16,6 +17,7 @@ public class Insidiae extends ApplicationAdapter {
     private OrthographicCamera camera;
     private SpriteBatch batch;
     private Sprite mapSprite;
+    private BitmapFont font;
 
     @Override
     public void create() {
@@ -26,6 +28,7 @@ public class Insidiae extends ApplicationAdapter {
         mapSprite.setPosition(0, 0);
         mapSprite.setSize(1000, 1000);
         batch = new SpriteBatch();
+        font = new BitmapFont();
         Gdx.input.setInputProcessor(new InputGameProcessor(camera, mapSprite));
     }
 
@@ -37,6 +40,7 @@ public class Insidiae extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         mapSprite.draw(batch);
+        ((InputGameProcessor) Gdx.input.getInputProcessor()).drawMousePosition(batch, font);
         batch.end();
     }
 
